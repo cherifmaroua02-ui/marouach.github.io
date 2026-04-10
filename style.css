@@ -1,137 +1,91 @@
-/* --- Couleurs et Polices --- */
 :root {
     --bg-color: #f4f7f6;
     --sidebar-bg: #eaeeef;
     --main-green: #5dfcbe;
     --text-dark: #333333;
-    --text-light-grey: #999999;
-    --font-title: 'Roboto Slab', serif; 
+    --font-title: 'Roboto Slab', serif;
     --font-text: 'Open Sans', sans-serif;
 }
 
-/* Importation de polices Google */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap');
 
-/* --- Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-text); background-color: var(--bg-color); color: var(--text-dark); }
 
-body {
-    font-family: var(--font-text);
-    background-color: var(--bg-color);
-    color: var(--text-dark);
-    overflow-x: hidden;
-}
+.wrapper { display: flex; min-height: 100vh; }
 
-/* --- Structure Principale --- */
-.wrapper { display: flex; min-height: 100vh; position: relative; }
-
-/* --- LE BOUTON MENU MOBILE (3 barres) --- */
+/* BOUTON HAMBURGER */
 .menu-toggle {
-    display: none; /* Masqué sur bureau */
+    display: none;
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1001; /* Au-dessus de tout */
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    color: var(--text-dark);
+    z-index: 1001;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-/* --- BARRE LATÉRALE (Sidebar) --- */
+/* SIDEBAR */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
     padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
     position: fixed;
     height: 100vh;
     border-right: 1px solid #e0e0e0;
-    transition: transform 0.3s ease; /* Animation d'ouverture */
+    transition: 0.3s;
     z-index: 1000;
 }
 
-.menu-section h2, .sidebar-contact h2 {
-    font-family: var(--font-title);
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 5px;
-}
-
 .green-line { width: 35px; height: 3px; background-color: var(--main-green); margin-bottom: 25px; }
-
 .sidebar nav ul { list-style: none; }
 .sidebar nav ul li { border-bottom: 1px solid #e0e0e0; }
-
-.sidebar nav ul li a {
-    text-decoration: none;
-    color: #777;
-    display: block;
-    padding: 15px 0 15px 5px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.sidebar nav ul li a.active { color: var(--text-dark); background-color: rgba(93, 252, 190, 0.1); }
-
+.sidebar nav ul li a { text-decoration: none; color: #777; display: block; padding: 15px 0; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
+.sidebar nav ul li a.active { color: var(--text-dark); }
 .sidebar-contact { margin-top: auto; font-size: 0.8rem; color: #777; }
 .sidebar-contact ul { list-style: none; }
-.sidebar-contact ul li { margin-bottom: 12px; display: flex; align-items: center; }
-.sidebar-contact ul li i { color: var(--main-green); margin-right: 10px; width: 15px; text-align: center; }
+.sidebar-contact ul li { margin-bottom: 10px; display: flex; align-items: center; }
+.sidebar-contact ul li i { color: var(--main-green); margin-right: 10px; }
 
-/* --- CONTENU PRINCIPAL --- */
-.main-content { margin-left: 260px; flex: 1; background-color: #ffffff; padding: 40px 50px; }
+/* CONTENU */
+.main-content { margin-left: 260px; flex: 1; background: white; padding: 40px 50px; }
 .content-section { margin-bottom: 60px; }
-
-/* Style des Titres */
-.header-name { font-family: var(--font-title); font-size: 1rem; color: var(--text-dark); }
-.light-text { color: var(--text-light-grey); }
+.header-name { font-family: var(--font-title); }
 .full-green-line { width: 100%; height: 3px; background-color: var(--main-green); margin: 10px 0 40px 0; }
 
-/* Section Accueil */
-.welcome-block { display: flex; gap: 30px; align-items: flex-start; }
-.welcome-text h1 { font-family: var(--font-title); font-size: 2.5rem; margin-bottom: 20px; }
-.welcome-text h3 { font-family: var(--font-title); font-size: 1.2rem; color: #555; margin-bottom: 15px; }
-.welcome-text .subtitle { text-transform: uppercase; color: var(--text-light-grey); font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 25px; }
-.welcome-text .description { color: #777; line-height: 1.7; font-size: 0.9rem; }
+/* ACCUEIL */
+.welcome-block { display: flex; gap: 30px; }
+.welcome-text h1 { font-size: 2.5rem; }
+.welcome-image img { width: 200px; border-radius: 5px; }
 
-/* --- L'IMAGE DE PROFIL --- */
-.welcome-image img {
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
-}
+/* COMPÉTENCES */
+.green-line-title { width: 100%; height: 2px; background: #eee; position: relative; margin-bottom: 30px; }
+.green-line-title::after { content:''; position:absolute; left:0; width:80px; height:2px; background: var(--main-green); }
+.skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.skill-item { display: flex; gap: 15px; }
+.skill-icon-diamond { width: 40px; height: 40px; border: 1px solid #ddd; transform: rotate(45deg); display: flex; align-items: center; justify-content: center; color: var(--main-green); }
+.skill-icon-diamond i { transform: rotate(-45deg); }
 
-/* --- ADAPTATION MOBILE (Responsive) --- */
+/* PROJETS */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.project-card { border: 1px solid #eee; border-radius: 5px; overflow: hidden; }
+.project-card img { width: 100%; height: 150px; object-fit: cover; }
+.project-info { padding: 15px; }
+.btn-plus { border: 1px solid var(--main-green); color: var(--main-green); padding: 5px 10px; text-decoration: none; font-size: 0.7rem; }
+
+/* CONTACT */
+.coordonnees-box { border: 1px solid #eee; padding: 20px; border-radius: 5px; }
+.coord-item { display: flex; align-items: center; margin-bottom: 15px; }
+.coord-icon { color: var(--main-green); margin-right: 15px; }
+
+/* MOBILE */
 @media (max-width: 900px) {
-    /* Masquer la sidebar par défaut */
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    /* Afficher la sidebar quand elle est "ouverte" (via JS) */
-    .sidebar.open {
-        transform: translateX(0);
-    }
-
-    /* Afficher le bouton menu */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Ajuster le contenu principal */
-    .main-content {
-        margin-left: 0;
-        padding: 80px 20px; /* Plus d'espace en haut pour le bouton */
-    }
-
-    /* Empiler l'image et le texte */
-    .welcome-block {
-        flex-direction: column-reverse;
-        align-items: center;
-    }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .menu-toggle { display: block; }
+    .main-content { margin-left: 0; padding: 80px 20px; }
+    .welcome-block, .skills-container, .projects-grid { flex-direction: column; grid-template-columns: 1fr; }
 }
