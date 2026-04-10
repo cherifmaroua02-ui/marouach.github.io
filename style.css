@@ -1,0 +1,386 @@
+/* --- Couleurs et Polices --- */
+:root {
+    --bg-color: #f4f7f6; /* Gris très clair du fond */
+    --sidebar-bg: #eaeeef; /* Gris un peu plus foncé de la sidebar */
+    --main-green: #5dfcbe; /* Vert menthe vu sur les images */
+    --text-dark: #333333;
+    --text-light-grey: #999999;
+    
+    /* Police pour les titres (ressemble à Arvo ou Roboto Slab) */
+    --font-title: 'Roboto Slab', serif; 
+    /* Police pour le texte (ressemble à Open Sans) */
+    --font-text: 'Open Sans', sans-serif;
+}
+
+/* Importation de polices Google gratuites ressemblantes */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap');
+
+/* --- Reset de base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* --- Structure Principale (Wrapper) --- */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- BARRE LATÉRALE (Sidebar) --- */
+.sidebar {
+    width: 260px; /* Largeur fixe de la sidebar */
+    background-color: var(--sidebar-bg);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Reste fixe à gauche */
+    height: 100vh;
+    border-right: 1px solid #e0e0e0;
+}
+
+.menu-section h2, .sidebar-contact h2 {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    text-transform: none; /* Pas de majuscules automatiques */
+}
+
+/* La petite ligne verte sous "Menu" et "Contact" */
+.green-line {
+    width: 35px;
+    height: 3px;
+    background-color: var(--main-green);
+    margin-bottom: 25px;
+}
+
+/* Liens du menu */
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    border-bottom: 1px solid #e0e0e0; /* Ligne de séparation grise */
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #777; /* Gris moyen */
+    display: block;
+    padding: 15px 0 15px 5px;
+    text-transform: uppercase; /* Tout en majuscules */
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.sidebar nav ul li a:hover, .sidebar nav ul li a.active {
+    color: var(--text-dark);
+    background-color: rgba(93, 252, 190, 0.1); /* Léger fond vert au survol */
+}
+
+/* Section contact en bas de la sidebar */
+.sidebar-contact {
+    margin-top: auto; /* Pousse vers le bas */
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.sidebar-contact h2 {
+    margin-top: 30px;
+}
+
+.sidebar-contact ul {
+    list-style: none;
+}
+
+.sidebar-contact ul li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-contact ul li i {
+    color: var(--main-green); /* Icônes en vert */
+    margin-right: 10px;
+    font-size: 1rem;
+    width: 15px;
+    text-align: center;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.main-content {
+    margin-left: 260px; /* Espace pour la sidebar fixe */
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px 50px;
+}
+
+.content-section {
+    margin-bottom: 60px;
+    display: none; /* Caché par défaut pour simuler la navigation */
+}
+
+/* Pour afficher la section active (nécessite un peu de JS ou de gestion d'ancres) */
+.content-section:target, #accueil {
+    display: block;
+}
+
+/* --- Style des Titres de Section --- */
+.main-content h1 {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Ligne verte sous les titres de section */
+.green-line-title {
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.green-line-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--main-green);
+}
+
+/* --- SECTION ACCUEIL (Spécifique) --- */
+.header-name {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+}
+
+.light-text {
+    color: var(--text-light-grey);
+}
+
+.full-green-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--main-green);
+    margin: 10px 0 40px 0;
+}
+
+.welcome-block {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.welcome-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.welcome-text h3 {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.welcome-text .subtitle {
+    text-transform: uppercase;
+    color: var(--text-light-grey);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.welcome-text .description {
+    color: #777;
+    line-height: 1.7;
+    font-size: 0.9rem;
+}
+
+.welcome-image img {
+    width: 200px; /* Ajustez selon votre image */
+    height: auto;
+    border-radius: 5px;
+}
+
+/* --- SECTION COMPÉTENCES --- */
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.skill-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* L'icône dans le losange/diamant */
+.skill-icon-diamond {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg); /* Rotation pour faire le losange */
+    color: var(--main-green);
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.skill-icon-diamond i {
+    transform: rotate(-45deg); /* Remet l'icône droite */
+}
+
+.skill-text h4 {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.skill-text p {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+/* --- SECTION PROJETS --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.project-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h4 {
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.4;
+    min-height: 40px; /* Pour aligner les boutons */
+}
+
+/* Bouton vert "Plus" */
+.btn-plus {
+    display: inline-block;
+    padding: 6px 15px;
+    border: 1px solid var(--main-green);
+    color: var(--main-green);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.btn-plus:hover {
+    background-color: var(--main-green);
+    color: #fff;
+}
+
+/* --- SECTION CONTACT --- */
+.coordonnees-box {
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.coordonnees-box h3 {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.coord-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.coord-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.coord-icon {
+    color: var(--main-green);
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.coord-item a {
+    color: #777;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.coord-item span {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Boutons Retour Accueil et Voir Projets */
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--main-green);
+    color: var(--main-green);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background-color: var(--main-green);
+    color: #fff;
+}
