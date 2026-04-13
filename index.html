@@ -49,14 +49,37 @@
                 <div class="welcome-block">
                     <div class="welcome-text">
                         <h1>SOFIANE BADJA</h1>
-                        <h3>Futur ingénieur en automatique et robotique...</h3>
+                        <h3>Futur ingénieur en automatique et robotique, là où la rigueur rencontre l'innovation...</h3>
                         <p class="subtitle">CHAQUE LÉGENDE COMMENCE PAR UN RÊVE SANS LIMITE.</p>
                         <p class="description">
                             Mon parcours c'est comme un système que l'on apprend d'abord à comprendre avant de le maîtriser...
                         </p>
                     </div>
                     <div class="welcome-image">
-                        <img src="profile.jpg.png" alt="Sofiane Badja">
+                        <img src="profile.jpg" alt="Sofiane Badja">
+                    </div>
+                </div>
+            </section>
+
+            <section id="projets" class="content-section">
+                <h1>Projets & expériences</h1>
+                <div class="green-line-title"></div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="robot_vision.jpg" alt="Vision">
+                        <div class="project-info">
+                            <h4>Stage automaticien – Vision automatique</h4>
+                            <button class="btn-plus" onclick="openModal('modal1')">PLUS</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="kuka_robot.jpg" alt="KUKA">
+                        <div class="project-info">
+                            <h4>Pilotage d'un bras robot industriel KUKA</h4>
+                            <button class="btn-plus" onclick="openModal('modal2')">PLUS</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -69,51 +92,36 @@
                         <div class="skill-icon-diamond"><i class="fa fa-gem"></i></div>
                         <div class="skill-text">
                             <h4>Programmation & Robotique</h4>
-                            <p>MATLAB / Simulink, C++, Python, ROS2, Arduino, HTML/CSS/JS.</p>
+                            <p>MATLAB / Simulink, C++, Python, ROS2, Arduino.</p>
                         </div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-icon-diamond"><i class="fa fa-microchip"></i></div>
                         <div class="skill-text">
                             <h4>Électronique & FPGA</h4>
-                            <p>LTspice, PSpice, Proteus, VHDL, Quartus.</p>
+                            <p>LTspice, VHDL, Quartus, Conception de circuits.</p>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section id="projets" class="content-section">
-                <h1>Projets & expériences</h1>
-                <div class="green-line-title"></div>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="projet1.jpg" alt="Stage">
-                        <div class="project-info">
-                            <h4>Stage automaticien – Vision automatique</h4>
-                            <a href="#" class="btn-plus">PLUS</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="projet2.jpg" alt="KUKA">
-                        <div class="project-info">
-                            <h4>Pilotage d'un bras robot industriel KUKA</h4>
-                            <a href="#" class="btn-plus">PLUS</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="content-section">
-                <h1>Contact</h1>
-                <div class="coordonnees-box">
-                    <h3>Coordonnées</h3>
-                    <div class="coord-item"><i class="fa fa-envelope coord-icon"></i> <span>sofianebadja90@gmail.com</span></div>
-                    <div class="coord-item"><i class="fa fa-phone coord-icon"></i> <span>06 99 97 29 33</span></div>
-                    <div class="coord-item"><i class="fa fa-home coord-icon"></i> <span>Clermont-Ferrand, France</span></div>
                 </div>
             </section>
 
         </main>
+    </div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Stage automaticien - Détails</h2>
+            <p>Description complète de votre stage ici : Mise en place d'un système de contrôle par vision avec caméras Cognex, intégration avec un automate Siemens...</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Pilotage KUKA - Détails</h2>
+            <p>Description complète ici : Programmation de trajectoires complexes, gestion des entrées/sorties et sécurité machine sur contrôleur KRC4...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
