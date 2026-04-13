@@ -1,3 +1,4 @@
+/* --- Variables & Base --- */
 :root {
     --bg-color: #f4f7f6;
     --sidebar-bg: #eaeeef;
@@ -12,80 +13,62 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: var(--font-text); background-color: var(--bg-color); color: var(--text-dark); }
 
-.wrapper { display: flex; min-height: 100vh; }
-
-/* BOUTON HAMBURGER */
+/* --- Menu Hamburger --- */
 .menu-toggle {
-    display: none;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
-    background: white;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    position: fixed; top: 20px; left: 20px; z-index: 2000;
+    background: white; border: 1px solid #ddd; padding: 10px;
+    border-radius: 5px; cursor: pointer; display: none; /* Caché sur PC */
 }
 
-/* SIDEBAR */
+/* --- Sidebar --- */
 .sidebar {
-    width: 260px;
-    background-color: var(--sidebar-bg);
-    padding: 40px 20px;
-    position: fixed;
-    height: 100vh;
-    border-right: 1px solid #e0e0e0;
-    transition: 0.3s;
-    z-index: 1000;
+    width: 260px; background-color: var(--sidebar-bg);
+    padding: 40px 20px; position: fixed; height: 100vh;
+    border-right: 1px solid #e0e0e0; transition: 0.3s ease; z-index: 1500;
 }
 
 .green-line { width: 35px; height: 3px; background-color: var(--main-green); margin-bottom: 25px; }
 .sidebar nav ul { list-style: none; }
 .sidebar nav ul li { border-bottom: 1px solid #e0e0e0; }
 .sidebar nav ul li a { text-decoration: none; color: #777; display: block; padding: 15px 0; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; }
-.sidebar nav ul li a.active { color: var(--text-dark); }
-.sidebar-contact { margin-top: auto; font-size: 0.8rem; color: #777; }
-.sidebar-contact ul { list-style: none; }
-.sidebar-contact ul li { margin-bottom: 10px; display: flex; align-items: center; }
-.sidebar-contact ul li i { color: var(--main-green); margin-right: 10px; }
 
-/* CONTENU */
-.main-content { margin-left: 260px; flex: 1; background: white; padding: 40px 50px; }
-.content-section { margin-bottom: 60px; }
-.header-name { font-family: var(--font-title); }
+/* --- Main Content --- */
+.main-content { margin-left: 260px; padding: 40px 50px; background: white; min-height: 100vh; }
 .full-green-line { width: 100%; height: 3px; background-color: var(--main-green); margin: 10px 0 40px 0; }
 
-/* ACCUEIL */
-.welcome-block { display: flex; gap: 30px; }
-.welcome-text h1 { font-size: 2.5rem; }
-.welcome-image img { width: 200px; border-radius: 5px; }
+/* --- Projets & Boutons --- */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.project-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+.project-card img { width: 100%; height: 200px; object-fit: cover; }
+.project-info { padding: 20px; }
+.btn-plus { 
+    background: transparent; border: 1.5px solid var(--main-green); 
+    color: var(--main-green); padding: 8px 20px; cursor: pointer;
+    font-weight: bold; font-size: 0.7rem; border-radius: 4px;
+}
+.btn-plus:hover { background: var(--main-green); color: white; }
 
-/* COMPÉTENCES */
-.green-line-title { width: 100%; height: 2px; background: #eee; position: relative; margin-bottom: 30px; }
-.green-line-title::after { content:''; position:absolute; left:0; width:80px; height:2px; background: var(--main-green); }
-.skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.skill-item { display: flex; gap: 15px; }
-.skill-icon-diamond { width: 40px; height: 40px; border: 1px solid #ddd; transform: rotate(45deg); display: flex; align-items: center; justify-content: center; color: var(--main-green); }
-.skill-icon-diamond i { transform: rotate(-45deg); }
+/* --- Modales (Fenêtres de description) --- */
+.modal {
+    display: none; position: fixed; z-index: 3000; 
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color: white; margin: 10% auto; padding: 30px;
+    border-radius: 8px; width: 50%; position: relative;
+}
+.close {
+    position: absolute; right: 20px; top: 10px;
+    font-size: 28px; font-weight: bold; cursor: pointer;
+}
 
-/* PROJETS */
-.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.project-card { border: 1px solid #eee; border-radius: 5px; overflow: hidden; }
-.project-card img { width: 100%; height: 150px; object-fit: cover; }
-.project-info { padding: 15px; }
-.btn-plus { border: 1px solid var(--main-green); color: var(--main-green); padding: 5px 10px; text-decoration: none; font-size: 0.7rem; }
-
-/* CONTACT */
-.coordonnees-box { border: 1px solid #eee; padding: 20px; border-radius: 5px; }
-.coord-item { display: flex; align-items: center; margin-bottom: 15px; }
-.coord-icon { color: var(--main-green); margin-right: 15px; }
-
-/* MOBILE */
+/* --- Mobile --- */
 @media (max-width: 900px) {
+    .menu-toggle { display: block; }
     .sidebar { transform: translateX(-100%); }
     .sidebar.open { transform: translateX(0); }
-    .menu-toggle { display: block; }
     .main-content { margin-left: 0; padding: 80px 20px; }
-    .welcome-block, .skills-container, .projects-grid { flex-direction: column; grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .modal-content { width: 90%; }
 }
